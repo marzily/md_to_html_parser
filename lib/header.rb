@@ -13,16 +13,14 @@ class Header
   def to_html
     md.lines.each do |line|
       html_line = write_header(line)
-
     end
   end
 
   def write_header(line)
-    size = count_hashmarks(line)
+    start = size = count_hashmarks(line)
     new_line = line
 
     if size > 0
-      start = size
       start += 1 until line[start] != " "
       new_line = "<h#{size}>#{line[start..-1]}</h#{size}>"
     end
