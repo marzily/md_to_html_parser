@@ -1,12 +1,16 @@
 class Header
-  attr_reader :md_lines
+  attr_reader :md
 
-  def initialize(md_lines)
-    @md_lines = md_lines
+  def initialize(md)
+    @md = md
+  end
+
+  def lines
+    md.split "\n"
   end
 
   def to_html
-    md_lines.map do |line|
+    lines.map do |line|
       hashes = count_hashmarks(line)
       write_header(hashes, line)
     end

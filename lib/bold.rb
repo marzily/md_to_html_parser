@@ -1,4 +1,4 @@
-class Italic
+class Bold
   attr_accessor :md_lines
 
   def initialize(md_lines)
@@ -12,10 +12,9 @@ class Italic
     end
   end
 
-  def find_em(line)
-    
-
-
+  def find_bold(line)
+    if line.include?("**")
+    end
 
   end
 end
