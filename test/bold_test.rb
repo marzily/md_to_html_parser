@@ -30,9 +30,8 @@ class BoldTest < Minitest::Test
   end
 
   def test_it_converts_bold_to_html
-    html = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n
-            \n\"You just *have* to try the cheesecake,\" he said. \"Ever since it appeared in
-            \n<strong>Food & Wine</strong> this place has been packed every night.\"\n"
+    html = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"You just *have* to try the cheesecake,\" he said. \"Ever since it appeared in\n<strong>Food & Wine</strong> this place has been packed every night.\"\n"
+
     assert_equal html, md.to_html
   end
 end
