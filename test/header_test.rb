@@ -30,6 +30,4 @@ class HeaderTest < Minitest::Test
 
     assert_equal html, md_text.to_html
   end
-
-
 end

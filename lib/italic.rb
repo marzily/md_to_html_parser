@@ -1,7 +1,9 @@
 class Italic
-  attr_accessor :lines
+  attr_accessor :md_lines
 
-  def initialize(lines)
-    @lines = lines
+  def initialize(md_lines)
+    @md_lines = md_lines
   end
+
+  def to_html
 end
