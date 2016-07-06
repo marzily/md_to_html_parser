@@ -1,31 +1,24 @@
 class Header
-  attr_accessor :md
+  attr_accessor :lines
 
-  def initialize(md)
-    @md = md
-    @md_with_headers = nil
+  def initialize(lines)
+    @lines = lines
   end
 
-  def lines
-    md.split("\n")
-  end
+  def to_html(line)
+    hashes = count_hashmarks(line)
 
-  def to_html
-    md.lines.each do |line|
-      html_line = write_header(line)
+    if hashes > 0
+      write_header(hashes, line)
+    else
+      line
     end
   end
 
-  def write_header(line)
-    start = size = count_hashmarks(line)
-    new_line = line
-
-    if size > 0
-      start += 1 until line[start] != " "
-      new_line = "<h#{size}>#{line[start..-1]}</h#{size}>"
-    end
-
-    new_line
+  def write_header(hashes, line)
+    start = hashes
+    start += 1 until line[start] != " "
+    "<h#{hashes}>#{line[start..-1]}</h#{hashes}>"
   end
 
   def count_hashmarks(line)
@@ -33,5 +26,4 @@ class Header
     i += 1 until line[i] != "#"
     i
   end
-
 end
