@@ -8,14 +8,25 @@ class Bold
   end
 
   def to_html
-    bold_text = find_bold
+    text = bold
+
+    text.each do |section|
+      write_bold(section)
+    end
+
+    md
   end
 
-  def find_bold
+  def write_bold(section)
+    i = md.index(section) - 2
+    j = md.index(section) + section.length + 1
+    md[i..j] = "<strong>" + section + "</strong>"
+  end
+
+  def bold
     text = []
 
     search_md = md
-
     while search_md.include?("**")
       i = search_md.index("**") + 2
       bolded_text = bold_text(search_md, i)
