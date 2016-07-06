@@ -13,8 +13,9 @@ class BoldTest < Minitest::Test
   end
 
   def test_it_doesnt_find_bold_if_none
-    skip
-    assert_equal nil, md.find_bold("*hello* summer")
+    md.md = "*hello* summer"
+
+    assert_equal "", md.find_bold
   end
 
   def test_it_converts_bold_to_html
