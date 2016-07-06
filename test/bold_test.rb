@@ -26,6 +26,7 @@ class BoldTest < Minitest::Test
 
   def test_it_writes_bold
     md.md = "**hello** winter"
+    
     assert_equal "<strong>hello</strong>", md.write_bold("hello")
   end
 
