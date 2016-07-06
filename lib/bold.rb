@@ -1,20 +1,33 @@
-class Bold
-  attr_accessor :md_lines
+require 'pry'
 
-  def initialize(md_lines)
-    @md_lines = md_lines
+class Bold
+  attr_accessor :md
+
+  def initialize(md)
+    @md = md
   end
 
   def to_html
-    md_lines.map do |line|
-      hashes = count_hashmarks(line)
-      write_header(hashes, line)
+    bold_text = find_bold
+  end
+
+  def find_bold
+    if md.include?("**")
+      bold_text
+    else
+      ""
     end
   end
 
-  def find_bold(line)
-    if line.include?("**")
+  def bold_text
+    bold = ""
+    i = md.index("**") + 2
+
+    until md[i..i + 1] == "**"
+      bold << md[i]
+      i += 1
     end
 
+    bold
   end
 end
