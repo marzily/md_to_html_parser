@@ -6,7 +6,19 @@ class Italic
   end
 
   def to_html
+    text = find_em
 
+    text.each do |section|
+      write_em(section)
+    end
+
+    md
+  end
+
+  def write_em(section)
+    i = md.index(section) - 1
+    j = md.index(section) + section.length
+    md[i..j] = "<em>" + section + "</em>"
   end
 
   def find_em

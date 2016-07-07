@@ -25,15 +25,13 @@ class ItalicTest < Minitest::Test
   end
 
   def test_it_writes_emphasis_tags
-    skip
-    md.md = "**hello** winter"
+    md.md = "*hello* winter"
 
-    assert_equal "<strong>hello</strong>", md.write_bold("hello")
+    assert_equal "<em>hello</em>", md.write_em("hello")
   end
 
   def test_it_converts_italics_to_html
-    skip
-    html = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"You just *have* to try the cheesecake,\" he said. \"Ever since it appeared in\n<strong>Food & Wine</strong> this place has been packed every night.\"\n"
+    html = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"You just <em>have</em> to try the cheesecake,\" he said. \"Ever since it appeared in\n**Food & Wine** this place has been packed every night.\"\n"
 
     assert_equal html, md.to_html
   end
