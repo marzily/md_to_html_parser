@@ -9,24 +9,24 @@ class BoldTest < Minitest::Test
   end
 
   def test_it_finds_bold_in_md_text
-    assert_equal ["Food & Wine"], md.bold
+    assert_equal ["Food & Wine"], md.find_bold
   end
 
   def test_it_doesnt_find_bold_if_none
     md.md = "*hello* summer"
 
-    assert_equal [], md.bold
+    assert_equal [], md.find_bold
   end
 
   def test_it_finds_multiple_text_to_bold
     md.md = "**hello** winter, **hello** summer"
 
-    assert_equal ["hello", "hello"], md.bold
+    assert_equal ["hello", "hello"], md.find_bold
   end
 
   def test_it_writes_bold
     md.md = "**hello** winter"
-    
+
     assert_equal "<strong>hello</strong>", md.write_bold("hello")
   end
 
