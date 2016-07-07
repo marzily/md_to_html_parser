@@ -12,28 +12,26 @@ class ItalicTest < Minitest::Test
     assert_equal ["have"], md.find_em
   end
 
-  def test_it_doesnt_find_bold_if_none
-    skip
-    md.md = "*hello* summer"
+  def test_it_doesnt_find_italic_if_none
+    md.md = "**hello** summer"
 
-    assert_equal [], md.find_bold
+    assert_equal [], md.find_em
   end
 
-  def test_it_finds_multiple_text_to_bold
-    skip
-    md.md = "**hello** winter, **hello** summer"
+  def test_it_finds_multiple_text_to_italicize
+    md.md = "*hello* winter, *hello* summer"
 
-    assert_equal ["hello", "hello"], md.find_bold
+    assert_equal ["hello", "hello"], md.find_em
   end
 
-  def test_it_writes_bold
+  def test_it_writes_emphasis_tags
     skip
     md.md = "**hello** winter"
 
     assert_equal "<strong>hello</strong>", md.write_bold("hello")
   end
 
-  def test_it_converts_bold_to_html
+  def test_it_converts_italics_to_html
     skip
     html = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"You just *have* to try the cheesecake,\" he said. \"Ever since it appeared in\n<strong>Food & Wine</strong> this place has been packed every night.\"\n"
 

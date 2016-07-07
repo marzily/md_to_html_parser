@@ -24,7 +24,7 @@ class BoldTest < Minitest::Test
     assert_equal ["hello", "hello"], md.find_bold
   end
 
-  def test_it_writes_bold
+  def test_it_writes_strong_tags
     md.md = "**hello** winter"
 
     assert_equal "<strong>hello</strong>", md.write_bold("hello")

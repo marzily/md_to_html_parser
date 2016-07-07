@@ -14,17 +14,21 @@ class Italic
 
     search_md = md
     while search_md.include?("*")
-      i = search_md.index("*") + 1
-      if search_md[i] != "*"
-        italicized_text = italic_text(search_md, i)
-        text << italicized_text.first
-        search_md = search_md[italicized_text.last..-1]
-      else
-        search_md = search_md[(i + 1)..-1]
-      end
+      search_md = save_italic(text, search_md)
     end
 
     text
+  end
+
+  def save_italic(text, search_md)
+    i = search_md.index("*") + 1
+    if search_md[i] != "*"
+      italicized_text = italic_text(search_md, i)
+      text << italicized_text.first
+      search_md = search_md[italicized_text.last..-1]
+    else
+      search_md = search_md[(i + 1)..-1]
+    end
   end
 
   def italic_text(search_md, i)
