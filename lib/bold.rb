@@ -8,7 +8,7 @@ class Bold
   end
 
   def to_html
-    text = bold
+    text = find_bold
 
     text.each do |section|
       write_bold(section)
@@ -23,7 +23,7 @@ class Bold
     md[i..j] = "<strong>" + section + "</strong>"
   end
 
-  def bold
+  def find_bold
     text = []
 
     search_md = md
