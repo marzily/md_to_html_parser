@@ -13,7 +13,7 @@ class Header
     lines.map do |line|
       hashes = count_hashmarks(line)
       write_header(hashes, line)
-    end
+    end.join(" ")
   end
 
   def write_header(hashes, line)

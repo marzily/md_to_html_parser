@@ -7,4 +7,9 @@ class ParagraphTest < Minitest::Test
     input = File.read "./my_input.md"
     @md = Paragraph.new input
   end
+
+  def test_it_finds_the_right_content
+    md.md = "# My Life in Desserts"
+    assert_equal "", md.paragraph
+  end
 end
