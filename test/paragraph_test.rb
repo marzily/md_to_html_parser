@@ -14,21 +14,26 @@ class ParagraphTest < Minitest::Test
     assert_equal "<p>My Life in Desserts</p>", Paragraph.new(input).to_html
   end
 
-  def test_it_turns_multiline_text_into_paragraphs
+  def test_it_turns_multiline_text_into_a_paragraph
     input = '"You just have to try the cheesecake," he said. "Ever since it appeared in Food & Wine this place has been packed every night."'
 
     assert_equal "<p>#{input}</p>", Paragraph.new(input).to_html
   end
 
-  def test_it_turns_lines_separated_by_a_single_line_break_into_a_paragraph
+  def test_it_turns_single_line_breaks_into_a_paragraph
     input = "hello\nsummer"
 
     assert_equal "<p>#{input}</p>", Paragraph.new(input).to_html
   end
 
-  def test_it_turns_lines_separated_by_two_line_breaks_into_separate_paragraphs
+  def test_it_turns_two_line_breaks_into_paragraphs
     input = "hello\n\nsummer"
 
     assert_equal "<p>hello</p>\n<p>summer</p>", Paragraph.new(input).to_html
+  end
+
+  def test_it_turns_three_line_breaks_into_paragraphs
+
+
   end
 end
