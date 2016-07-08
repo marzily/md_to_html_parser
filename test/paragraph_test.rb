@@ -8,8 +8,9 @@ class ParagraphTest < Minitest::Test
     @md = Paragraph.new input
   end
 
-  def test_it_finds_the_right_content
-    md.md = "# My Life in Desserts"
-    assert_equal "", md.paragraph
+  def test_it_turns_md_into_html
+    input = "My Life in Desserts"
+
+    assert_equal "<p>My Life in Desserts</p>", Paragraph.new(input).to_html
   end
 end
