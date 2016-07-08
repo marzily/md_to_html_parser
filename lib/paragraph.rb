@@ -6,7 +6,7 @@ class Paragraph
   end
 
   def to_html
-    if md[0] == "#"
+    if md[0] == "#" || md[0] == "*"
       md
     elsif md.include?("\n\n")
       lines = split_content
