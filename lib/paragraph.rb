@@ -6,9 +6,21 @@ class Paragraph
   end
 
   def to_html
-    "<p>#{md}</p>"
+    if md.include?("\n\n")
+      lines = split_content
+      multi_lines(lines)
+    else
+      "<p>#{md}</p>"
+    end
   end
 
-  def find_paragraph
+  def split_content
+    md.split("\n\n")
+  end
+
+  def multi_lines(lines)
+    lines.map do |line|
+      "<p>#{line}</p>"
+    end.join("\n")
   end
 end
