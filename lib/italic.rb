@@ -37,9 +37,9 @@ class Italic
     if search_md[i] != "*"
       italicized_text = italic_text(search_md, i)
       text << italicized_text.first
-      search_md = search_md[italicized_text.last..-1]
+      search_md[italicized_text.last..-1]
     else
-      search_md = search_md[(i + 1)..-1]
+      search_md[(i + 1)..-1]
     end
   end
 
