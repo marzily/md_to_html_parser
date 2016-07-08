@@ -32,8 +32,9 @@ class ParagraphTest < Minitest::Test
     assert_equal "<p>hello</p>\n<p>summer</p>", Paragraph.new(input).to_html
   end
 
-  def test_it_turns_three_line_breaks_into_paragraphs
+  def test_it_does_not_turn_headers_into_html
+    input = "# My Life in Desserts"
 
-
+    assert_equal input, Paragraph.new(input).to_html
   end
 end
