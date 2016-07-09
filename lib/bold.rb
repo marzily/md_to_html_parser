@@ -1,5 +1,3 @@
-require 'pry'
-
 class Bold
   attr_accessor :md
 
