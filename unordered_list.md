@@ -1,3 +1,0 @@
-* Sushi
-* Barbeque
-* Mexican
