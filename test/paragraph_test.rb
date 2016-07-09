@@ -17,7 +17,7 @@ class ParagraphTest < Minitest::Test
   def test_it_turns_single_line_breaks_into_a_paragraph
     input = "hello\nsummer"
 
-    assert_equal "<p>#{input}</p>", Paragraph.new(input).to_html
+    assert_equal "<p>hello summer</p>", Paragraph.new(input).to_html
   end
 
   def test_it_turns_two_line_breaks_into_paragraphs
@@ -46,7 +46,7 @@ class ParagraphTest < Minitest::Test
 
   def test_correctly_converts_md_paragraphs_to_html
     input = File.read "./my_input.md"
-    output = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"<p>You just *have* to try the cheesecake,\" he said. \"Ever since it appeared in **Food & Wine** this place has been packed every night.\"</p>"
+    output = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n<p>\"You just *have* to try the cheesecake,\" he said. \"Ever since it appeared in **Food & Wine** this place has been packed every night.\"</p>"
 
     assert_equal output, Paragraph.new(input).to_html
   end

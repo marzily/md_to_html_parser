@@ -31,7 +31,7 @@ class ItalicTest < Minitest::Test
   end
 
   def test_it_converts_italics_to_html
-    html = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"You just <em>have</em> to try the cheesecake,\" he said. \"Ever since it appeared in\n**Food & Wine** this place has been packed every night.\"\n"
+    html = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"You just <em>have</em> to try the cheesecake,\" he said. \"Ever since it appeared in **Food & Wine** this place has been packed every night.\"\n"
 
     assert_equal html, md.to_html
   end
