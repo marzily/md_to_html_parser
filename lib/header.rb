@@ -5,15 +5,15 @@ class Header
     @md = md
   end
 
-  def lines
-    md.split "\n"
-  end
-
   def to_html
     lines.map do |line|
       hashes = count_hashmarks(line)
       write_header(hashes, line)
     end.join(" ")
+  end
+
+  def lines
+    md.split "\n"
   end
 
   def write_header(hashes, line)

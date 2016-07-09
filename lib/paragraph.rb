@@ -1,5 +1,5 @@
 class Paragraph
-  attr_accessor :md
+  attr_reader :md
 
   def initialize(md)
     @md = md
