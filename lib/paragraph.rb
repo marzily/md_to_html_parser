@@ -6,7 +6,7 @@ class Paragraph
   end
 
   def to_html
-    if md[0] == "#" || md[0] == "*"
+    if non_para.include?(md[0])
       md
     elsif md.include?("\n\n")
       lines = split_content
@@ -14,6 +14,10 @@ class Paragraph
     else
       "<p>#{md}</p>"
     end
+  end
+
+  def non_para
+    (0..9).to_a.map(&:to_s) + %w(# *)
   end
 
   def split_content

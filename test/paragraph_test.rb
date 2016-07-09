@@ -39,8 +39,14 @@ class ParagraphTest < Minitest::Test
   end
 
   def test_it_does_not_turn_unordered_lists_into_paragraphs
-    input = File.read "./unordered_list.md"
-    
-    assert_equal "* Sushi\n* Barbeque\n* Mexican\n", Paragraph.new(input).to_html
+    input = "* Sushi\n* Barbeque\n* Mexican\n"
+
+    assert_equal input, Paragraph.new(input).to_html
+  end
+
+  def test_it_does_not_turn_ordered_lists_into_paragraphs
+    input = "1. Sushi\n2. Barbeque\n3. Mexican\n"
+
+    assert_equal input, Paragraph.new(input).to_html
   end
 end
