@@ -6,27 +6,20 @@ class Paragraph
   end
 
   def to_html
-    if non_para.include?(md[0])
-      md
-    elsif md.include?("\n\n")
-      lines = split_content
-      multi_lines(lines)
-    else
-      "<p>#{md}</p>"
-    end
+    lines.map do |line|
+      if non_para.include?(line[0])
+        line
+      else
+        "<p>#{line}</p>"
+      end
+    end.join("\n")
   end
 
   def non_para
     (0..9).to_a.map(&:to_s) + %w(# *)
   end
 
-  def split_content
+  def lines
     md.split("\n\n")
-  end
-
-  def multi_lines(lines)
-    lines.map do |line|
-      "<p>#{line}</p>"
-    end.join("\n")
   end
 end

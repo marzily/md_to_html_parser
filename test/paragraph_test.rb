@@ -1,12 +1,6 @@
 require_relative 'test_helper'
 
 class ParagraphTest < Minitest::Test
-  attr_reader :md
-
-  def setup
-    input = File.read "./my_input.md"
-    @md = Paragraph.new input
-  end
 
   def test_it_turns_md_into_html
     input = "My Life in Desserts"
@@ -48,5 +42,12 @@ class ParagraphTest < Minitest::Test
     input = "1. Sushi\n2. Barbeque\n3. Mexican\n"
 
     assert_equal input, Paragraph.new(input).to_html
+  end
+
+  def test_correctly_converts_md_paragraphs_to_html
+    input = File.read "./my_input.md"
+    output = "# My Life in Desserts\n\n## Chapter 1: The Beginning\n\n\"<p>You just *have* to try the cheesecake,\" he said. \"Ever since it appeared in **Food & Wine** this place has been packed every night.\"</p>"
+
+    assert_equal output, Paragraph.new(input).to_html
   end
 end
