@@ -6,6 +6,14 @@ class List
   end
 
   def to_html
-    
+    lines.map do |line|
+      if line[0] == "*" && line[1..-1]
+      end
+
+    end
+  end
+
+  def lines
+    md.split("\n")
   end
 end
