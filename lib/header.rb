@@ -20,7 +20,7 @@ class Header
     start = hashes
 
     if hashes > 0
-      start += 1 until line[start] != " "
+      start += 1 while line[start] == " "
       "<h#{hashes}>#{line[start..-1]}</h#{hashes}>"
     else
       line
@@ -29,7 +29,7 @@ class Header
 
   def count_hashmarks(line)
     i = 0
-    i += 1 until line[i] != "#"
+    i += 1 while line[i] == "#"
     i
   end
 end
