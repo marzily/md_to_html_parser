@@ -17,16 +17,6 @@ class List
     end.join("\n")
   end
 
-  def ul(line, i)
-    if i == 0
-      "<ul>\n  <li>#{ul_li_item(line)}</li>"
-    elsif i == (lines.count - 1)
-      "  <li>#{ul_li_item(line)}</li>\n</ul>"
-    else
-      "  <li>#{ul_li_item(line)}</li>"
-    end
-  end
-
   def ol(line, i)
     if i == 0
       "<ol>\n  <li>#{ol_li_item(line)}</li>"
@@ -35,10 +25,6 @@ class List
     else
       "  <li>#{ol_li_item(line)}</li>"
     end
-  end
-
-  def ul_li_item(line)
-    line[1..-1].strip
   end
 
   def ol_li_item(line)
@@ -54,6 +40,20 @@ class List
 
   def is_ol?(line)
     (0..9).to_a.map(&:to_s).include?(line[0])
+  end
+
+  def ul(line, i)
+    if i == 0
+      "<ul>\n  <li>#{ul_li_item(line)}</li>"
+    elsif i == (lines.count - 1)
+      "  <li>#{ul_li_item(line)}</li>\n</ul>"
+    else
+      "  <li>#{ul_li_item(line)}</li>"
+    end
+  end
+
+  def ul_li_item(line)
+    line[1..-1].strip
   end
 
   def is_ul?(line)
