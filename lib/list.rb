@@ -7,24 +7,56 @@ class List
 
   def to_html
     lines.map.with_index do |line, i|
-      li = li_item(line)
-      if is_list?(line) && i == 0
-        "<ul>\n  <li>#{li}</li>"
-      elsif is_list?(line) && i == (lines.count - 1)
-        "  <li>#{li}</li>\n</ul>"
-      elsif is_list?(line)
-        "  <li>#{li}</li>"
+      if is_ul?(line)
+        ul(line, i)
+      elsif is_ol?(line)
+        ol(line, i)
       else
         line
       end
     end.join("\n")
   end
 
-  def li_item(line)
+  def ul(line, i)
+    if i == 0
+      "<ul>\n  <li>#{ul_li_item(line)}</li>"
+    elsif i == (lines.count - 1)
+      "  <li>#{ul_li_item(line)}</li>\n</ul>"
+    else
+      "  <li>#{ul_li_item(line)}</li>"
+    end
+  end
+
+  def ol(line, i)
+    if i == 0
+      "<ol>\n  <li>#{ol_li_item(line)}</li>"
+    elsif i == (lines.count - 1)
+      "  <li>#{ol_li_item(line)}</li>\n</ol>"
+    else
+      "  <li>#{ol_li_item(line)}</li>"
+    end
+  end
+
+  def ul_li_item(line)
     line[1..-1].strip
   end
 
-  def is_list?(line)
+  def ol_li_item(line)
+    ol = (0..9).to_a.map(&:to_s) + ["."]
+
+    i = 0
+    while ol.include?(line[i]) && !line[i].nil?
+      i += 1
+    end
+
+    line[i..-1].strip
+  end
+
+  def is_ol?(line)
+    (0..9).to_a.map(&:to_s).include?(line[0])
+  end
+
+  def is_ul?(line)
     line[0] == "*" && !line[1..-1].include?("*")
   end
 
