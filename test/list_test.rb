@@ -15,6 +15,4 @@ class ListTest < Minitest::Test
 
     assert_equal html, List.new(md).to_html
   end
-
-
 end
