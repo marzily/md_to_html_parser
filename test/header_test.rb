@@ -9,9 +9,9 @@ class HeaderTest < Minitest::Test
   end
 
   def test_it_correctly_counts_hashmarks
-    assert 1, md_text.count_hashmarks(md_text.lines.first)
-    assert 0, md_text.count_hashmarks(md_text.lines[1])
-    assert 2, md_text.count_hashmarks(md_text.lines[2])
+    assert_equal 1, md_text.count_hashmarks(md_text.lines.first)
+    assert_equal 0, md_text.count_hashmarks(md_text.lines[1])
+    assert_equal 2, md_text.count_hashmarks(md_text.lines[2])
   end
 
   def test_it_writes_headers

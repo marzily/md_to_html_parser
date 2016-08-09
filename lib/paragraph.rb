@@ -37,7 +37,6 @@ class Paragraph
       end.join("</p>\n<p>")
     end
 
-
     def non_para
       (0..9).to_a.map(&:to_s) + %w(# *)
     end
